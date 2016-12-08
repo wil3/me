@@ -8,24 +8,26 @@ user to maintain a repository of their data while this project presents and
 formats the data to be displayed (think Markdown or Latex). This follows the 
 model-view-view model (MVVM) pattern.
 
+A demo can be seen [here](http://cs-people.bu.edu/wfkoch/).
+
 # Install
 
 1. Clone the repository to your web server. Optionally fork the project and
    customize it to your liking.
 
 ```
-git clone git@github.com:wil3/me.git
+git clone https://github.com/wil3/me.git
 ```
 
-2. Create your own repository, call it `me-data`. Create a file named
-   `me-data.js` and fill in your data following the schema `me-schema.json`.
-Additionally create an `announcements.js` file and add new announcements to be
-displayed.
+2. Fork [my-data](https://github.com/wil3/my-data) project and fill in your data in `my-data.js` following the schema `my-schema.json`.
+Additionally add recent news to `news.js` file.
 
-3. Create a soft link in the root of this project to `me-data`.
+3. On the web server clone your forked `my-data` project.
+
+4. Create a soft link in the root of this project to `my-data`.
 
 ```
-ln -s my-directory/me-data ./me-data
+ln -s my-directory/my-data ./my-data
 ```
 
 # Implementation Details
