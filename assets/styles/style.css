@@ -20,9 +20,7 @@
 	list-style: none;
 }
 .profile-item li {
-	padding-top: 10px; 
-	list-style-position: outside;
-	margin-left: 1em;
+	padding: 5px; 
 }
 .author { 
 	font-weight: bold;
@@ -39,7 +37,6 @@
     font-family: 'Glyphicons Halflings';
     font-size: 20px;
     float: left;
-    margin-top: -5px;
     margin-left: -17px;
 	margin-right: 10px;
 	color: #f4511e;
