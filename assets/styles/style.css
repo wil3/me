@@ -1,0 +1,107 @@
+@media (min-width: 801px) {    
+	.container{
+		width:800px;
+	}
+}
+#profile-picture {
+	width:256px;
+}
+#position {
+	color: #888;
+}
+#social-networks img {
+	width:50px;
+}
+.me-social {
+/*	font-size: 50px;*/
+}
+
+.profile-item ul {
+	list-style: none;
+}
+.profile-item li {
+	padding-top: 10px; 
+	list-style-position: outside;
+	margin-left: 1em;
+}
+.author { 
+	font-weight: bold;
+}
+.badges {
+	border-top: 1px solid #DDD;
+	padding: 10px;
+}
+.profile-badge {
+	color: #FFF;
+	font-size: 25px !important;
+}
+.custom-bullet:before {
+    font-family: 'Glyphicons Halflings';
+    font-size: 20px;
+    float: left;
+    margin-top: -5px;
+    margin-left: -17px;
+	margin-right: 10px;
+	color: #f4511e;
+}
+.authors:before {
+    content: "\e008";
+}
+.venue:before {
+	content: "\e043";
+}
+.talk:before {
+	content: "\e218";
+	/*content: "\e122";*/
+}
+.date:before {
+	content: "\e109";
+}
+.location:before {
+	content: "\e062";
+}
+.time:before {
+	content: "\e023";
+}
+
+/* Styles for carousel */
+#myCarousel {
+	background-color: #EEE;
+}
+.carousel-inner {
+	height: 150px;
+
+/*
+padding-left:15%;
+padding-right:15%;
+*/
+}
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+    color: #f4511e;
+}
+
+.carousel-indicators li {
+    border-color: #f4511e;
+}
+
+.carousel-indicators li.active {
+    background-color: #f4511e;
+}
+.item {
+/*
+*/
+  display: inline-block;
+
+}
+.item h4 {
+    font-size: 19px;
+    line-height: 1.375em;
+    font-weight: 400;
+    font-style: italic;
+    margin: 50px 0;
+	margin-right:15%;
+	margin-left:15%;
+
+}
+

@@ -1,0 +1,202 @@
+<html>
+	<head>
+		<title></title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="assets/styles/style.css">
+		<link rel="stylesheet" href="assets/styles/kc.fab.css">
+		<link rel="stylesheet" href="assets/styles/octicons.css">
+		<link href="assets/styles/materialdesignicons.min.css" media="all" rel="stylesheet" type="text/css" />
+
+		<!-- MDL -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.blue-deep_orange.min.css" />
+		<script defer src="https://code.getmdl.io/1.2.1/material.min.js"></script>
+
+
+		<script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.1/knockout-min.js"></script>
+		<script src="assets/scripts/kc.fab.min.js"></script>
+		<script src="me.js"></script>
+
+		<!-- User supplied data -->
+		<script src="me-data/announcements.js"></script>
+		<script src="me-data/me-data.js"></script>
+	</head>
+	<body id="top">
+
+		<div class="container text-center">
+			<img data-bind="attr: {src: portrait}"  id="profile-picture" alt="Profile Picture" class="img-circle">
+		</div>
+
+		<div class="container text-center">
+			<h1 data-bind="text: name"> </h1>
+			<h3 data-bind="text: position" id="position"> </h3>
+			<p data-bind="text: bio"></p>
+		</div>
+
+
+		<!-- Social networks -->
+		<div id="social-networks" class="container text-center">
+			<div class="row" data-bind="foreach: social">
+				<!-- The column size is dynamically computed-->
+				<div class="social-network">
+					<a data-bind="attr: { href: url}" target="_blank">
+						<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--raised mdl-js-ripple-effect mdl-button--primary">
+							<i data-bind="attr: {class: iconClass}" ></i>
+						</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="container text-center">
+			<h3>Announcements</h3>
+			<div id="myCarousel" class="jumbotron carousel slide text-center" data-ride="carousel">
+				  <ol class="carousel-indicators" data-bind="foreach: announce">
+					  <li data-target="#myCarousel" class="stub" data-bind="attr: {'data-slide-to': $index}, css: {'active': $index() == 0}" ></li>
+				  </ol>
+				  <!-- Wrapper for slides, --> 
+				    <div class="carousel-inner" data-bind="foreach: announce" role="listbox">
+						<div class="item" data-bind="css: {'active': $index() == 0}">
+							<h4 data-bind="html: description"></h4> 
+						</div>
+					</div>
+				  <!-- Left and right controls -->
+				  <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				  </a>
+				  <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				  </a>
+			</div>
+		</div>
+		<!-- Publications -->
+		<div id="publications" class="container ">
+			<h3>Publications</h3>
+			<div data-bind="foreach: publications">
+				<div class="row profile-item">
+					<div class="col-xs-12">
+
+						<!-- ko if: $data.url -->
+						<a data-bind="attr: { href: url}" target="_blank"><h4 data-bind="text: title"></h4></a>
+						<!-- /ko -->
+						<!-- ko ifnot: $data.url -->
+						<h4 data-bind="text: title"></h4>
+						<!-- /ko -->
+
+							<ul>						
+								<li class="custom-bullet authors">
+									<div>
+										<!--<span title="Authors" class="glyphicon glyphicon-user logo-small"></span> -->
+										<span data-bind="foreach: authors">
+											<!-- ko if: $index() > 0 -->,<!-- /ko -->
+											<!-- ko if: $data.url -->
+											<a data-bind="text:  name, css: {author: name  == $root.name}, attr: {href: url}" target="_blank"></a>
+											<!-- /ko -->
+											<!-- ko ifnot: $data.url -->
+											<span data-bind="text:  name, css: {author: name  == $root.name}"></span>
+											<!-- /ko -->
+										</span>
+									</div>
+								</li>
+								<li class="custom-bullet venue">
+									<span data-bind="text: publication"></span>
+								</li>
+								<!-- ko if: $data.location -->
+								<li class="custom-bullet location">
+									<span data-bind="text: location"></span>
+								</li>
+								<!-- /ko -->
+
+								<!-- ko if: $data.date -->
+								<li class="custom-bullet date">
+									<span data-bind="text: date"></span>
+								</li>
+								<!-- /ko -->
+
+								<!-- ko if: $data.talks -->
+								<!-- ko foreach: talks -->
+								
+								<li class="custom-bullet talk">
+									<span data-bind="text: event"></span>, <span data-bind="text: date"></span>
+								</li>
+								<!-- /ko -->
+								<!-- /ko -->
+
+							</ul>
+							<!-- ko if: $data.code -->
+							<div class="badges">
+								<a data-bind="attr: { href: code}" target="_blank"><span class="badge"><span class="octicon octicon-mark-github profile-badge"></span></span></a>
+							</div>
+							<!-- /ko -->
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div id="industry" class="container ">
+			<h3>Industry</h3>
+			<div data-bind="foreach: industry">
+				<div class="row profile-item">
+					<div class="col-xs-12">
+						<h4 data-bind="text: position"></h4>
+							<ul>						
+								<li class="custom-bullet authors">
+									<!-- ko if: $data.url -->
+									<a data-bind="attr: { href: url}" target="_blank"><span data-bind="text: employer"></span></a>
+									<!-- /ko -->
+									<!-- ko ifnot: $data.url -->
+									<span data-bind="text: employer"></span>
+									<!-- /ko -->
+								</li>
+								<li class="custom-bullet time">
+									<span data-bind="text: start"></span>
+									- <span data-bind="text: end"></span>
+								</li>
+								<li>
+								</li>
+							</ul>
+									<p data-bind="text: description"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Projects -->
+		<div id="software" class="container">
+			<h3>Software</h3>
+			<div data-bind="foreach: projects">
+				<div class="row profile-item">
+					<div class="col-xs-12">
+						<!-- ko if: $data.url -->
+						<a data-bind="attr: { href: url}" target="_blank"><h4 data-bind="text: title"></h4></a>
+						<!-- /ko -->
+						<!-- ko ifnot: $data.url -->
+						<h4 data-bind="text: title"></h4>
+						<!-- /ko -->
+
+						<p data-bind="text: description"></p>
+						<div class="badges">
+							<!-- ko if: $data.code -->
+							<a data-bind="attr: { href: code}" target="_blank"><span class="badge"><span class="octicon octicon-mark-github profile-badge"></span></span></a>
+							<!-- /ko -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- The navigation -->
+		<div class="kc_fab_wrapper" ></div>
+
+
+	</body>
+</html>
