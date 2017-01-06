@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	$.getJSON("/my-data/my-data.json", function(data){
+	$.getJSON("my-data/my-data.json", function(data){
 
 		document.title = data.title;
 
