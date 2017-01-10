@@ -24,7 +24,11 @@ $(document).ready(function(){
 			self.social = ko.observableArray(socialnetworks)
 		}
 		AppViewModel.prototype = data;
-		AppViewModel.prototype.announce = announce;
+		try {
+			AppViewModel.prototype.announce = announce;
+		} catch(e){ 
+			AppViewModel.prototype.announce = false;
+		}
 
 		ko.applyBindings(new AppViewModel());
 		// There is a limitation here where if not divisible by 12 will be funky
