@@ -3,6 +3,9 @@
 		width:800px;
 	}
 }
+body {
+	padding:20px;
+}
 #profile-picture {
 	width:256px;
 }
@@ -38,7 +41,6 @@
     font-size: 20px;
     float: left;
     margin-left: -30px;
-	color: #f4511e;
 }
 .authors:before {
     content: "\e008";
@@ -60,10 +62,6 @@
 	content: "\e023";
 }
 
-/* Styles for carousel */
-#myCarousel {
-	background-color: #EEE;
-}
 .carousel-inner {
 	height: 150px;
 
@@ -74,16 +72,8 @@ padding-right:15%;
 }
 .carousel-control.right, .carousel-control.left {
     background-image: none;
-    color: #f4511e;
 }
 
-.carousel-indicators li {
-    border-color: #f4511e;
-}
-
-.carousel-indicators li.active {
-    background-color: #f4511e;
-}
 .item {
 /*
 */
